@@ -30,25 +30,44 @@ This project implements a **task-driven 3D semantic scene graph** running entire
 ### Key formulas implemented
 
 **Task-relevance score (Clio Eq. 4):**
-```
-θ(xᵢ)_j = cos(f_{xᵢ}, f_{t_j})   for task j
-```
+
+$$
+\theta(x_i)_j = \cos(f_{x_i}, f_{t_j})
+\quad \text{for task } j
+$$
 
 **IB merge criterion (Clio Eq. 2):**
-```
-d_ij = JS[ p(y|xᵢ), p(y|x_j) ]
-```
-Objects with `d_ij < 0.05` are merged into the same semantic cluster.
+
+$$
+d_{ij} = JS\!\left[p(y \mid x_i),\; p(y \mid x_j)\right]
+$$
+
+Objects with $d_{ij} < 0.05$ are merged into the same semantic cluster.
 
 **Free-space label (Dynablox Eq. 5):**
-```
-f = 𝟙( t_occ(v') < t - T_w  ∧  w(v') > 0,  ∀v' ∈ 𝒩(v) )
-```
+
+$$
+f =
+\mathbb{1}
+\left(
+t_{\mathrm{occ}}(v') < t - T_w
+\;\land\;
+w(v') > 0,
+\quad
+\forall v' \in \mathcal{N}(v)
+\right)
+$$
 
 **Dynamic detection (Dynablox Eq. 6):**
-```
-V_dyn = { v_k ∈ K(P^t) | ∃v' ∈ 𝒩(v_k) : f(v') = 1 }
-```
+
+$$
+V_{\mathrm{dyn}} =
+\{\, v_k \in K(P^t)
+\mid
+\exists v' \in \mathcal{N}(v_k) :
+f(v') = 1
+\,\}
+$$
 
 ---
 
